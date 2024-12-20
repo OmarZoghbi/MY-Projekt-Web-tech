@@ -1,0 +1,21 @@
+{
+    "name": "Meine PWA",
+    "short_name": "PWA",
+    "description": "Eine Progressive Web App mit responsivem Design",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#317EFB",
+    "icons": [
+        {
+            "src": "Bilder/web-icon.webp",
+            "sizes": "192x192",
+            "type": "image/webp"
+        },
+        {
+            "src": "Bilder/web-icon.webp",
+            "sizes": "512x512",
+            "type": "image/webp"
+        }
+    ]
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../Css/OnlineShop.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<header>
+    <a href="../HTML/Übersichtsseite.html" class="startseite-icon">
+        <i class="fas fa-home"></i>
+    </a>
+    <!-- Titel -->
+    <div class="banner">
+        <h1>MJO GAMESCOM</h1>
+    </div>
+    <!-- Suchleiste -->
+    <form class="search-form" action="#" method="get" onsubmit="event.preventDefault(); searchGames();">
+        <label>
+            <input type="text" id="search-input" class="search-input" placeholder="Suche..." oninput="searchGames()">
+        </label>
+        <button type="submit" class="search-button" style="background: none; border: none; cursor: pointer;">
+            <i class="fas fa-search" style="font-size: 24px; color: white;"></i>
+        </button>
+    </form>
+    <!-- Zum Warenkorb -Button -->
+    <nav class="cart-header">
+        <div class="cart-info">
+            <span class="cart-count">Artikel: <span id="item-count">0</span></span>
+            <span class="cart-total">Gesamt: <span id="total-price">0.00 €</span></span>
+            <!-- Warenkorb Icon -->
+            <button onclick="goToCart()" class="cart-button" style="background: none; border: none; cursor: pointer;">
+                <i class="fas fa-shopping-cart" style="font-size: 20px; color: #FFD700;"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="category-dropdown">
+        <button class="main-category-btn" onclick="toggleCategoryDropdown()">Kategorien</button>
+        <div class="dropdown-content" id="dropdown-content">
+            <button onclick="filterGames('all')">Alle</button>
+            <button onclick="filterGames('Abenteuer & Rollenspiele')">Abenteuer & Rollenspiele</button>
+            <button onclick="filterGames('Action & Shooting')">Action & Shooting</button>
+            <button onclick="filterGames('Rennenspiele')">Rennenspiele</button>
+            <button onclick="filterGames('Sci-Fi & Weltraum')">Sci-Fi & Weltraum</button>
+            <button onclick="filterGames('Strategie & Familienspiel')">Strategie & Familienspiel</button>
+            <button onclick="filterGames('Survival')">Survival</button>
+        </div>
+    </div>
+</header>
+<body>
+<div class="shop-container">
+    <!-- Bestehende Spiele (1-12) -->
+    <!-- Spiele 1-4 -->
+    <div class="game-card" data-category ="Sci-Fi & Weltraum">
+        <a href="Detailsseite.html">
+            <img src="../Bilder/Game%201.png" alt="Spiel 1" class="game-image">
+            <h2>Univers X</h2>  </a>
+        <p class="price" data-price="29.99">29,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+    <div class="game-card" data-category ="Strategie & Familienspiel">
+        <img src="../Bilder/Game%202.png" alt="Spiel 2" class="game-image">
+        <h2>Dropoly</h2>
+        <p class="price" data-price="34.99">34,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Rennenspiele">
+        <img src="../Bilder/Game%203.png" alt="Spiel 3" class="game-image">
+        <h2>Gen VI </h2>
+        <p class="price" data-price="44.99">44,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Survival">
+        <img src="../Bilder/Game%204.png" alt="Spiel 4" class="game-image">
+        <h2>Lost 2</h2>
+        <p class="price" data-price="59.99">59,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Abenteuer & Rollenspiele">
+        <img src="../Bilder/Game%206.png" alt="Spiel 5" class="game-image">
+        <h2> Dragon Slayer </h2>
+        <p class="price" data-price="24.99">24,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Sci-Fi & Weltraum">
+        <img src="../Bilder/Game%205.png" alt="Spiel 6" class="game-image">
+        <h2>Planet X </h2>
+        <p class="price" data-price="19.99">19,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Abenteuer & Rollenspiele">
+        <img src="../Bilder/Spiel%203.webp" alt="Spiel 10" class="game-image">
+        <h2>Fortnitte 2 </h2>
+        <p class="price" data-price="29.99">29,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Survival">
+        <img src="../Bilder/spiel%201.webp" alt="Spiel 11" class="game-image">
+        <h2> Last Man V </h2>
+        <p class="price" data-price="39.99">39,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <!-- Weitere Spiele (13-20) -->
+    <div class="game-card" data-category ="Strategie & Familienspiel">
+        <a href="Detailseite2.html">
+        <img src="../Bilder/Game%2012.png" alt="Spiel 13" class="game-image">
+        <h2> Moritz Adventure</h2> </a>
+        <p class="price" data-price="19.99">19,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Rennenspiele">
+        <img src="../Bilder/Game%2010.png" alt="Spiel 14" class="game-image">
+        <h2> Fast Way 3 </h2>
+        <p class="price" data-price="29.99">29,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Action & Shooting">
+        <img src="../Bilder/Spiel%202.webp" alt="Spiel 15" class="game-image">
+        <h2> Solo Field V </h2>
+        <p class="price" data-price="34.99">34,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Abenteuer & Rollenspiele">
+        <img src="../Bilder/Game%2020.png" alt="Spiel 16" class="game-image">
+        <h2> Amitios Fight </h2>
+        <p class="price" data-price="39.99">39,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Strategie & Familienspiel">
+        <img src="../Bilder/Game%2013.webp" alt="Spiel 17" class="game-image">
+        <h2>Smash Party </h2>
+        <p class="price" data-price="49.99">49,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Sci-Fi & Weltraum">
+        <img src="../Bilder/Game%2021.webp" alt="Spiel 18" class="game-image">
+        <h2>GPT Terminat</h2>
+        <p class="price" data-price="54.99">54,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Abenteuer & Rollenspiele">
+        <img src="../Bilder/Game%209.png" alt="Spiel 19" class="game-image">
+        <h2> Eskahlor </h2>
+        <p class="price" data-price="59.99">59,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+
+    <div class="game-card" data-category ="Rennenspiele">
+        <img src="../Bilder/Game%2011.png" alt="Spiel 20" class="game-image">
+        <h2> Fast Way 2</h2>
+        <p class="price" data-price="64.99">64,99 €</p>
+        <button class="add-to-cart" onclick="addToCart(this)">In den Warenkorb</button>
+        <div class="action-buttons">
+            <button class="edit-button" onclick="editGame(this)">Bearbeiten</button>
+            <button class="delete-button" onclick="deleteGame(this)">Löschen</button>
+        </div>
+    </div>
+</div>
+<script src="../Js/shop.js"></script>
+</body>
+
+<footer class="footer-note">
+    <h6>© 2023 MJO GAMESCOM GmbH. Diese Seite dient nur Demonstrationszwecken. </h6>
+    <nav class="navbar">
+        <ul>
+            <li><a href="Kontaktformular.html">Kontaktformular</a></li>
+            <li><a href="Impressum.html">Impressum</a></li>
+        </ul>
+    </nav>
+</footer>
+</html>
